@@ -1,3 +1,5 @@
-# Discord-Math-Games
-This is a Discord bot made by BDimension7 to bring the AoPS Reaper game to Discord. Made with JS.
-The code is currently using the @replit/database package, but I plan on changing this soon.
+# Discord Math Games Bot by BDimension7
+
+This Discord bot brings the AoPS Reaper game to Discord with some additional features.
+The code currently uses the @replit/database package to store player and game info.
+The bot is currently hosted on [Repl.it](replit.com) and is written in JavaScript.
