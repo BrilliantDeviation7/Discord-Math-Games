@@ -35,16 +35,6 @@ const oneStr = " __ \n\
  |_|\n\
 ";
 
-function deleteInvalidCommand2(msg, replyStr) {
-    msg.channel.send(replyStr).then(replyMsg => {
-        setTimeout(function () {
-            msg.channel.messages.fetch(msg.id)
-                .then(msg => msg.delete())
-                .catch(console.error)
-            replyMsg.delete();
-        }, 2000); // 2s
-    });
-}
 function createExpression() {
     const operators = ["  +", "  -", "  x", "  /"];
     var operatorIndex = randomInt(0, 4);
@@ -99,7 +89,7 @@ function runDuel(msg, player1, player2) {
                     m.channel.send(`${m.author.username} correctly evaluated the expression!`)
                     correctResponses.push(m.author.username)
                 } else {
-                    deleteInvalidCommand2(m, "You already answered correctly!");
+                    deleteInvalidCommand(m, "You already answered correctly!", 2000);
                 }
             }
         }

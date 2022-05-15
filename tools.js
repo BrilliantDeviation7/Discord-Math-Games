@@ -1,12 +1,12 @@
 module.exports = {
-    deleteInvalidCommand: function (msg, replyStr) {
+    deleteInvalidCommand: function (msg, replyStr, t = 5000) {
         msg.channel.send(replyStr).then(replyMsg => {
             setTimeout(function () {
                 msg.channel.messages.fetch(msg.id)
                     .then(msg => msg.delete()) // delete user message
                     .catch(console.error)
                 replyMsg.delete(); // delete bot message
-            }, 5000); // 5000 ms
+            }, t); // 5000 ms default
         });
     },
     isNight: function () {
