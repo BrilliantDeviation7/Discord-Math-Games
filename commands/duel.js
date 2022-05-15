@@ -11,29 +11,23 @@ const endingQuotes = [
     "Ending quote here..."
 ];
 
-const threeStr = " ____  \n\
-|___ \\ \n\
-  __) |\n\
- |__ < \n\
- ___) |\n\
-|____/ \n\
-";
+const ONE = ` ______     __   __     ______
+/\\  __ \\   /\\ "-.\\ \\   /\\  ___\\
+\\ \\ \\/\\ \\  \\ \\ \\-.  \\  \\ \\  __\\
+ \\ \\_____\\  \\ \\_\\\\"\\_\\  \\ \\_____\\
+  \\/_____/   \\/_/ \\/_/   \\/_____/`;
 
-const twoStr = " ___  \n\
-|__ \\ \n\
-   ) |\n\
-  / / \n\
- / /_ \n\
-|____|\n\
-";
+const TWO = ` ______   __     __     ______
+/\\__  _\\ /\\ \\  _ \\ \\   /\\  __ \\
+\\/_/\\ \\/ \\ \\ \\/ ".\\ \\  \\ \\ \\/\\ \\
+   \\ \\_\\  \\ \\__/".~\\_\\  \\ \\_____\\
+    \\/_/   \\/_/   \\/_/   \\/_____/`;
 
-const oneStr = " __ \n\
-/_ |\n\
- | |\n\
- | |\n\
- | |\n\
- |_|\n\
-";
+const THREE = ` ______   __  __     ______     ______     ______
+/\\__  _\\ /\\ \\_\\ \\   /\\  == \\   /\\  ___\\   /\\  ___\\
+\\/_/\\ \\/ \\ \\  __ \\  \\ \\  __<   \\ \\  __\\   \\ \\  __\\
+   \\ \\_\\  \\ \\_\\ \\_\\  \\ \\_\\ \\_\\  \\ \\_____\\  \\ \\_____\\
+    \\/_/   \\/_/\\/_/   \\/_/ /_/   \\/_____/   \\/_____/`;
 
 function createExpression() {
     const operators = ["  +", "  -", "  x", "  /"];
@@ -99,39 +93,41 @@ function runDuel(msg, player1, player2) {
     });
     collector.on("end", collected => {
         if (correctResponses.length === 0) {
-            msg.channel.send(`No player answered correctly. Answer: ${answer}\n**New question in ${"```" + threeStr + "```"}**`).then((m) => {
-                setTimeout(function () {
-                    m.edit(`No player answered correctly. Answer: ${answer}\n**New question in ${"```" + twoStr + "```"}**`);
-                    setTimeout(function () {
-                        m.edit(`No player answered correctly. Answer: ${answer}\n**New question in ${"```" + oneStr + "```"}**`);
-                        setTimeout(function () {
+            const response = `No player answered correctly. Answer: ${answer}`;
+            msg.channel.send(`${response}\n**New question in ${"```" + THREE + "```"}**`).then((m) => {
+                setTimeout(() => {
+                    m.edit(`${response}\n**New question in ${"```" + TWO + "```"}**`);
+                    setTimeout(() => {
+                        m.edit(`${response}\n**New question in ${"```" + ONE + "```"}**`);
+                        setTimeout(() => {
                             runDuel(msg, player1, player2);
-                            m.edit(`No player answered correctly. Answer: ${answer}`);
-                        }, 1500)
-                    }, 1500)
-                }, 1500)
+                            m.edit(response);
+                        }, 1500);
+                    }, 1500);
+                }, 1500);
             })
         } else if (correctResponses.length === 1) {
             let winMsg = new Discord.MessageEmbed()
                 .setColor("GOLD")
                 .setTitle(`${correctResponses[0]} has won!`)
                 .setDescription(`The answer was ${answer}.\n${endingQuotes[randomInt(0, endingQuotes.length)]}`)
-            // .setImage("")
+                .setImage("https://cdn.jsdelivr.net/gh/BDimension7/Discord-Math-Games@master/images/your_did_it_star.jpg")
             msg.channel.send({ embeds: [winMsg] });
             inDuel.splice(inDuel.indexOf(player1.id), 1);
             inDuel.splice(inDuel.indexOf(player2.id), 1);
         } else {
-            msg.channel.send(`Both players answered correctly. Answer: ${answer}\n**New question in ${"```" + threeStr + "```"}**`).then((m) => {
-                setTimeout(function () {
-                    m.edit(`Both players answered correctly. Answer: ${answer}\n**New question in ${"```" + twoStr + "```"}**`);
-                    setTimeout(function () {
-                        m.edit(`Both players answered correctly. Answer: ${answer}\n**New question in ${"```" + oneStr + "```"}**`);
-                        setTimeout(function () {
+            const response = `Both players answered correctly. Answer: ${answer}`;
+            msg.channel.send(`${response}\n**New question in ${"```" + THREE + "```"}**`).then((m) => {
+                setTimeout(() => {
+                    m.edit(`${response}\n**New question in ${"```" + TWO + "```"}**`);
+                    setTimeout(() => {
+                        m.edit(`${response}\n**New question in ${"```" + ONE + "```"}**`);
+                        setTimeout(() => {
+                            m.edit(`${response}\n`);
                             runDuel(msg, player1, player2);
-                            m.edit(`Both players answered correctly. Answer: ${answer}\n`);
-                        }, 1500)
-                    }, 1500)
-                }, 1500)
+                        }, 1500);
+                    }, 1500);
+                }, 1500);
             })
         }
     });

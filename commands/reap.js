@@ -48,11 +48,11 @@ module.exports.run = (client, msg, args) => {
                             });
                             if (findUserIndex(game, msg.author.id) == game.length - 1) {
                                 color = "DARK_RED";
-                                var title = `You burned ${time_reaped / 1000} seconds!`;
+                                var title = `You burned ${Math.round(time_reaped / 1000)} seconds!`;
                                 desc = "**WARNING**\nNight-reaper detection caught you!";
                             } else {
                                 color = "GOLD";
-                                var title = `You donated ${time_reaped / 1000} seconds to\n${game[findUserIndex(game, msg.author.id) + 1][0]}!`;
+                                var title = `You donated ${Math.round(time_reaped / 1000)} seconds to\n${game[findUserIndex(game, msg.author.id) + 1][0]}!`;
                                 desc = "**WARNING**\nNight-reaper detection caught you!\nTime donated to player ranked below you.";
                                 game[findUserIndex(game, msg.author.id) + 1][1] += time_reaped;
                             }
