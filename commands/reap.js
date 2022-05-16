@@ -53,7 +53,8 @@ module.exports.run = async (client, msg, args) => {
                     desc = "**WARNING**\nNight-reaper detection caught you!";
                 } else {
                     color = "GOLD";
-                    var title = `You donated ${Math.round(time_reaped / 1000)} seconds to\n${game[findUserIndex(game, msg.author.id) + 1][0]}!`;
+                    let nextPlayer = await client.users.fetch(game[findUserIndex(game, msg.author.id) + 1][0]);
+                    var title = `You donated ${Math.round(time_reaped / 1000)} seconds to\n${nextPlayer.username}!`;
                     desc = "**WARNING**\nNight-reaper detection caught you!\nTime donated to player ranked below you.";
                     game[findUserIndex(game, msg.author.id) + 1][1] += time_reaped;
                 }
