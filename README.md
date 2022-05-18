@@ -15,6 +15,8 @@ To run on Repl.it, install these packages with the Repl.it Package Manager:
 - express
 - fraction.js
 
+![Repl.it Package Manager](./images/replit_packages.png)
+
 Roadmap:
 
 - Implement dueling reward system
