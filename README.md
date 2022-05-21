@@ -12,9 +12,9 @@ This Discord bot brings the AoPS Reaper game to Discord with additional features
 - $lb (leaderboard)
 - $info (lifetime leaderboard)
 - $clock
-- $donate
+- $donate @player amount
 - $help
-- $duel
+- $duel @player
 
 ### Default Settings
 
