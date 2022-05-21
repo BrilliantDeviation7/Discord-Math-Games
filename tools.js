@@ -57,11 +57,11 @@ module.exports = {
         if (!(n % 10)) return true;
         return false;
     },
-    findUserIndex: function (game_array, username) {
-        return game_array.findIndex(player => player[0] === username);
+    findUserIndex: function (game_array, id) {
+        return game_array.findIndex(player => player[0] === id);
     },
-    findUserInfo: function (game_array, username) {
-        return game_array.find(player => player[0] === username);
+    findUserInfo: function (game_array, id) {
+        return game_array.find(player => player[0] === id);
     },
     randomInt: function (min, max) {
         min = Math.ceil(min);
