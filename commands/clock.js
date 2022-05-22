@@ -18,9 +18,9 @@ module.exports.run = async (client, msg, args) => {
             iconURL: msg.author.displayAvatarURL()
         })
     if (!start) return deleteInvalidCommand(msg, "Game has not started!");
-    if (findUserIndex(game, msg.author.username) > -1) {
-        if ((t - findUserInfo(game, msg.author.username)[2]) < (cooldown * 1000)) {
-            clockMsg.setDescription(`${SecondstoTime(Math.round(cooldown - (t - findUserInfo(game, msg.author.username)[2]) / 1000))} until next reap!`);
+    if (findUserIndex(game, msg.author.id) > -1) {
+        if ((t - findUserInfo(game, msg.author.id)[2]) < (cooldown * 1000)) {
+            clockMsg.setDescription(`${SecondstoTime(Math.round(cooldown - (t - findUserInfo(game, msg.author.id)[2]) / 1000))} until next reap!`);
             return msg.channel.send({ embeds: [clockMsg] });
         }
     }
