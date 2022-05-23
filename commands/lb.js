@@ -7,6 +7,13 @@ module.exports.run = async (client, msg, args) => {
     let game = await db.get("game_scores");
     if (!game) return deleteInvalidCommand(msg, "No game in progress!");
     if (game.length < 1) return deleteInvalidCommand(msg, "No scores available.");
+
+    // leaderboard loading message
+    let loadMsg = new Discord.MessageEmbed()
+        .setColor("GREY")
+        .setTitle("Loading...")
+    loadMsg = await msg.channel.send({ embeds: [loadMsg] });
+
     game.sort(function (a, b) {
         if (a[1] === b[1]) return 0;
         return (a[1] < b[1]) ? 1 : -1;
@@ -44,6 +51,6 @@ module.exports.run = async (client, msg, args) => {
         .setColor("PURPLE")
         .setTitle("Leaderboard")
         .setDescription(scoresMsg + "```")
-    msg.channel.send({ embeds: [leaderboardMsg] });
+    loadMsg.edit({ embeds: [leaderboardMsg] });
 }
 exports.name = "lb"
