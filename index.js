@@ -1,7 +1,11 @@
 const Discord = require("discord.js");
-const { Permissions } = require("discord.js");
+const { Permissions, GatewayIntentBits } = require("discord.js");
 const client = new Discord.Client({
-    intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"],
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildMessageReactions
+    ],
     disableMentions: "everyone",
 });
 
