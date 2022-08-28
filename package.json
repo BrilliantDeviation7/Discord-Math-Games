@@ -1,0 +1,24 @@
+{
+    "name": "discord-math-games",
+    "version": "1.0.0",
+    "description": "This Discord bot brings the AoPS Reaper game to Discord with additional features:",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/BDimension7/Discord-Math-Games.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/BDimension7/Discord-Math-Games/issues"
+    },
+    "homepage": "https://github.com/BDimension7/Discord-Math-Games#readme",
+    "dependencies": {
+        "discord.js": "^14.3.0",
+        "dotenv": "^16.0.1"
+    }
+}
